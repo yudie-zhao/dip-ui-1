@@ -3,3 +3,4 @@ dist
 *.local
 .idea
 node_modules
+/dist
