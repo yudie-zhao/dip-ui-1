@@ -1,6 +1,7 @@
 {
   "name": "dip-ui-1",
   "version": "0.0.0",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vite build"
