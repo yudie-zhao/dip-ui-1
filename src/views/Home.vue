@@ -54,7 +54,7 @@ $color:#007974;
 }
 .features{
   margin:64px auto;
-  padding:0 16px;
+  padding:0 50px;
     @media (min-width:800px){
       width:800px;
       >ul{
@@ -72,29 +72,24 @@ $color:#007974;
       }
   }
     >ul{
-    display:flex;
-    flex-wrap:wrap;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content: center;
       >li{
         margin:16px 0;
-        display:grid;
-        justify-content: start;
-        align-content: space-between;
-        grid-template-areas:
-        "icon title"
-        "icon text";
-        grid-template-columns:80px auto;
-        grid-template-rows:1fr auto;
+        display:flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items:center;
         >h3{
-          grid-area:title;
           font-size:28px;
       }
         >svg{
-          grid-area:icon;
           width:64px;
           height:64px;
         }
       >p{
-        grid-area:text;
+        font-size:18px;
       }
     }
   }

@@ -14,6 +14,11 @@ export default {
         file: 'dist/lib/dip.js',
         format: 'umd',
         plugins: [terser()]
+    }, {
+        name: 'Dip',
+        file: 'dist/lib/dip.esm.js',
+        format: 'es',
+        plugins: [terser()]
     }],
     plugins: [
         scss({ include: /\.scss$/, sass: dartSass }),

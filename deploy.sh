@@ -5,7 +5,7 @@ git init &&
 git add . &&
 git commit -m "update" &&
 git branch -M main &&
-git remote add origin git@github.com:yudie-zhao/dip-ui-website-1.git &&
+git remote add origin git@github.com:yudie-zhao/dip-ui-website-3.git &&
 git push -f -u origin main &&
 cd - &&
-echo https://yudie-zhao.github.io/dip-ui-website-1/index.html
+echo https://yudie-zhao.github.io/dip-ui-website-3/index.html

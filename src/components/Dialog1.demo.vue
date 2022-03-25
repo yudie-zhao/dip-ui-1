@@ -3,7 +3,7 @@
 </demo>
 <template>
   <div>
-    <Button @click="toggle">toggle</Button>
+    <Button @click="toggle">Click me</Button>
     <Dialog v-model:visible="x" :closeOnClickOverlay="false"
             :ok="f1" :cancel="f2">
       <template v-slot:content>
@@ -17,8 +17,7 @@
   </div>
 </template>
 <script lang="ts">
-import Button from '../lib/Button.vue'
-import Dialog from '../lib/Dialog.vue'
+import {Button, Dialog} from '../lib/index'
 import {ref} from "vue";
 export default{
 components:{

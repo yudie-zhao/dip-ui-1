@@ -35,18 +35,20 @@ setup(){
 }
 </script>
 <style lang="scss">
-$color:#007974;
+$color:#32599b;
+$background:#e8f5fb;
 .topnav {
   color:$color;
   display:flex;
   padding: 16px;
-  position:fixed;;
-  z-index:10;
+  position:absolute;
+  z-index:15;
   top:0;
   left:0;
   width:100%;
   justify-content: center;
   align-items:center;
+  background:$background;
  > .toggleAside{
     width:32px;
     height:32px;
@@ -68,8 +70,13 @@ $color:#007974;
     display: flex;
     white-space: nowrap;
     flex-wrap: nowrap;
+    font-size:20px;
     >li {
       margin: 0 1em;
+      >a{
+        padding:0 13px;
+        text-decoration: none;
+      }
     }
   }
   @media (max-width:500px){
