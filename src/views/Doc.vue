@@ -31,22 +31,62 @@
           </li>
         </ol>
       </aside>
-      <main>
+      <main @click="toggleAsideVisible">
         <router-view />
       </main>
     </div>
   </div>
 </template>
 <script lang="ts">
-import Topnav from '../components/Topnav.vue'
-import {inject, Ref} from "vue";
-export default{
-  components:{
+import Topnav from "../components/Topnav.vue";
+import {
+  inject,
+  onMounted,
+  onUnmounted,
+  reactive,
+  Ref,
+  watchEffect
+} from "vue";
+import {
+  debounce
+} from '../utils/debounce';
+export default {
+  name: "Doc",
+  components: {
     Topnav
   },
-  setup(){
-    const menuVisible=inject<Ref<boolean>>('menuVisible')
-    return {menuVisible}
+  setup() {
+    const menuVisible = inject<Ref<boolean>>("menuVisible");
+    const data = reactive({
+      listenerPageWidthFn: () => {},
+      pageWidth: document.documentElement.clientWidth
+    })
+    const watchPageWidth = () => {
+      const listenerPageWidth = debounce(() => {
+        data.pageWidth = document.documentElement.clientWidth;
+      }, 250);
+      window.addEventListener("resize", listenerPageWidth);
+      return listenerPageWidth;
+    };
+    const toggleAsideVisible = () => {
+      if (data.pageWidth <= 900) {
+        menuVisible.value = false;
+      }
+    }
+    watchEffect(() => {
+      if (data.pageWidth >= 900) {
+        menuVisible.value = true;
+      }
+    })
+    onMounted(() => {
+      data.listenerPageWidthFn = watchPageWidth();
+    })
+    onUnmounted(() => {
+      window.removeEventListener("resize", data.listenerPageWidthFn);
+    })
+    return {
+      menuVisible,toggleAsideVisible
+    }
   }
 }
 </script>
@@ -63,8 +103,8 @@ $aside-index : 10;
     flex-grow: 1;
     padding-top: 60px;
     padding-left: 156px;
-    @media (max-width: 500px) {
-      padding-left: 0;
+    @media (max-width:500px){
+      padding-left:0;
     }
   }
 }
@@ -77,10 +117,11 @@ $aside-index : 10;
     flex-grow: 1;
     padding: 16px;
     background: white;
+    overflow:auto;
   }
 }
 aside {
-  background: lightblue;
+  background:#e8f5fb;
   width: 150px;
   padding: 16px 0;
   position: fixed;
@@ -89,6 +130,7 @@ aside {
   padding-top: 70px;
   height: 100%;
   z-index: $aside-index;
+  color:#32599b;
   >h2 {
     margin-bottom: 4px;
     padding: 0 16px;
@@ -101,7 +143,7 @@ aside {
         text-decoration: none;
       }
       .router-link-active {
-        background: white;
+        background: #7db3e7;
       }
     }
   }

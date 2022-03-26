@@ -1,6 +1,6 @@
 <template>
-    <div class="topnav">
-      <router-link  to="/" class="logo">
+    <div class="topnav" ref="topnav">
+      <router-link ref="topLogo" to="/" class="logo">
         <svg class="icon">
           <use xlink:href="#icon-langhua"></use>
         </svg>
@@ -16,27 +16,39 @@
     </div>
 </template>
 <script lang="ts">
-import {inject,Ref} from "vue";
-
-export default{
-  props:{
-    toggleMenuButtonVisible:{
-      type:Boolean,
-      default:false
-    }
+import {
+  inject, onMounted, onUnmounted, ref,
+  Ref
+} from "vue";
+export default {
+  props: {
+    toggleMenuButtonVisible: {
+      type: Boolean,
+      default: false,
+    },
   },
-setup(){
-  const menuVisible=inject<Ref<boolean>>('menuVisible')
-  const toggleMenu=()=>{
-    menuVisible.value=!menuVisible.value
-  }
-  return {toggleMenu}
-}
-}
+  setup() {
+    const menuVisible = inject < Ref < boolean >> ("menuVisible");
+    const topnav=ref<HTMLDivElement>(null)
+    const toggleMenu = () => {
+      menuVisible.value = !menuVisible.value;
+    };
+    const handleScroll=()=>{}
+    onMounted(()=>{
+      window.addEventListener("scroll", handleScroll);
+    })
+    onUnmounted(() => {
+      window.removeEventListener("scroll", handleScroll);
+    });
+    return {
+      toggleMenu,topnav
+    };
+  },
+};
 </script>
 <style lang="scss">
 $color:#32599b;
-$background:#e8f5fb;
+$blue:#7db3e7;
 .topnav {
   color:$color;
   display:flex;
@@ -48,7 +60,6 @@ $background:#e8f5fb;
   width:100%;
   justify-content: center;
   align-items:center;
-  background:$background;
  > .toggleAside{
     width:32px;
     height:32px;
@@ -61,6 +72,7 @@ $background:#e8f5fb;
 > .logo {
   max-width: 6em;
   margin-right: auto;
+  margin-left:1em;
   >svg{
     width:32px;
     height:32px;
@@ -72,10 +84,13 @@ $background:#e8f5fb;
     flex-wrap: nowrap;
     font-size:20px;
     >li {
-      margin: 0 1em;
+      margin-right:1em;
       >a{
         padding:0 13px;
         text-decoration: none;
+        &:hover{
+          color:$blue;
+        }
       }
     }
   }
