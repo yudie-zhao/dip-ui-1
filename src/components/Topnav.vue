@@ -47,19 +47,21 @@ export default {
 };
 </script>
 <style lang="scss">
-$color:#32599b;
+$color:white;
 $blue:#7db3e7;
 .topnav {
   color:$color;
   display:flex;
-  padding: 16px;
-  position:absolute;
+  padding: 14px;
+  position:fixed;
   z-index:15;
   top:0;
   left:0;
   width:100%;
   justify-content: center;
   align-items:center;
+  box-shadow: 0 2px 8px #f0f1f2;
+  background: linear-gradient(45deg, rgba(209,224,237,1) 0%, rgba(50,89,155,1) 100%);;
  > .toggleAside{
     width:32px;
     height:32px;
@@ -76,6 +78,7 @@ $blue:#7db3e7;
   >svg{
     width:32px;
     height:32px;
+    vertical-align: -1.15em;
   }
 }
   >.menu {

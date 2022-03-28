@@ -45,7 +45,7 @@ components:{Topnav}
 <style lang="scss" scoped>
 $blue:#7db3e7;
 $border-radius:4px;
-$color:#32599b;
+$color:#429fe8;
 .homeWrapper{
   background:#e8f5fb;
   height:100%;

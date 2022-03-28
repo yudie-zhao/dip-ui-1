@@ -55,6 +55,7 @@ $grey:grey;
   box-sizing:border-box;
   height:$h;
   padding:0 12px;
+  margin-bottom:12px;
   cursor:pointer;
   display:inline-flex;
   justify-content:center;

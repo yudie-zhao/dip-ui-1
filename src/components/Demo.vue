@@ -40,7 +40,7 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
-$border-color: #d9d9d9;
+$border-color:#7db3e7;
 .demo {
   border: 1px solid $border-color;
   margin: 16px 0 32px;

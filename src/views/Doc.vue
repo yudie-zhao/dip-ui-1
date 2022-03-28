@@ -69,12 +69,12 @@ export default {
       return listenerPageWidth;
     };
     const toggleAsideVisible = () => {
-      if (data.pageWidth <= 900) {
+      if (data.pageWidth <= 500) {
         menuVisible.value = false;
       }
     }
     watchEffect(() => {
-      if (data.pageWidth >= 900) {
+      if (data.pageWidth >= 500) {
         menuVisible.value = true;
       }
     })
@@ -116,18 +116,18 @@ $aside-index : 10;
   >main {
     flex-grow: 1;
     padding: 16px;
-    background: white;
+    background:#e8f5fb;
     overflow:auto;
+    margin-top:16px;
   }
 }
 aside {
   background:#e8f5fb;
   width: 150px;
-  padding: 16px 0;
-  position: fixed;
-  top: 0;
+  padding: 0 0 16px;
+  position:fixed;
+  top: 76px;
   left: 0;
-  padding-top: 70px;
   height: 100%;
   z-index: $aside-index;
   color:#32599b;
